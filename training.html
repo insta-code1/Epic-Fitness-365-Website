@@ -10,8 +10,8 @@
 	<link rel="stylesheet" href="css/carousel.css">
 	<link rel="stylesheet" href="css/idangerous.swiper.css">
 
-	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
 	<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
@@ -248,10 +248,41 @@
 						<p>Cardio Timing!</p>
 
 					</div>
-			</div>
-		</body>
+				</div>
+
+				<div align="center">
+				<ol></ol>
 
 
+				</body>
+
+				<script>
+					var myUrl = "https://wger.de/api/v2/equipment.json?language=2"
+					var myAnotherUrl = "https://wger.de/api/v2/exerciseimage.json?language=2"
+
+					$.getJSON(myUrl, function(oData){
+						console.log(oData)
+					})
+			//make ajax requets
+			$.ajax({
+				url:myAnotherUrl,
+				success: function(oData) {
+
+					var workoutResponses = "<li> </li>";
+					
+					for (var i = 0; i <= oData.results.length; i++) {
+						console.log (oData.results[i].image);
+
+
+						workoutResponses += "<li> <img + src=" + oData.results[i].image + " </li>"
+
+						$("ol").html(workoutResponses)
+					}
+				}
+			})
+
+
+		</script>
 
 
 
@@ -264,7 +295,7 @@
 
 		<script src="js/custom.select.js"></script>  
 		<script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/jquery-ui.min.js"></script>  
-		<script type="text/javascript" src="js/twitterfeed.js"></script>
+		
 
 
 
